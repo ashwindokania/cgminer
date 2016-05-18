@@ -59,6 +59,9 @@ static cgtimer_t usb11_cgt;
 #define BITFURY_TIMEOUT_MS 999
 #define DRILLBIT_TIMEOUT_MS 999
 #define ICARUS_TIMEOUT_MS 999
+#if USE_GEKKO
+#define GEKKO_TIMEOUT_MS 999
+#endif
 
 // There is no windows version
 #define ANT_S1_TIMEOUT_MS 200
@@ -406,6 +409,19 @@ static struct usb_intinfo cmr2_ints[] = {
 	USB_EPS_CTRL(2, 3, cmr2_epinfos2),
 	USB_EPS_CTRL(3, 4, cmr2_epinfos3)
 };
+#endif
+
+#ifdef USE_GEKKO
+
+static struct usb_epinfo gek_epinfos[] = {
+	{ LIBUSB_TRANSFER_TYPE_BULK,	64,	EPI(1), 0, 0 },
+	{ LIBUSB_TRANSFER_TYPE_BULK,	64,	EPO(1), 0, 0 }
+};
+
+static struct usb_intinfo gek_ints[] = {
+	USB_EPS(0, gek_epinfos)
+};
+
 #endif
 
 #ifdef USE_COINTERRA
@@ -851,6 +867,32 @@ static struct usb_find_devices find_dev[] = {
 		.timeout = ICARUS_TIMEOUT_MS,
 		.latency = LATENCY_STD,
 		INTINFO(cmr2_ints) },
+#endif
+#ifdef USE_GEKKO
+	{
+		.drv = DRIVER_gekko,
+		.name = "GEK",
+		.ident = IDENT_GEK,
+		.idVendor = 0x10c4,
+		.idProduct = 0xea60,
+		.iManufacturer = "GekkoScience",
+		.iProduct = "Compac BM1384 Bitcoin Miner",
+		.config = 1,
+		.timeout = GEKKO_TIMEOUT_MS,
+		.latency = LATENCY_UNUSED,
+		INTINFO(gek_ints) },
+	{
+		.drv = DRIVER_gekko,
+		.name = "GEK",
+		.ident = IDENT_GEK1,
+		.idVendor = 0x10c4,
+		.idProduct = 0xea60,
+		.iManufacturer = "bitshopperde",
+		.iProduct = "Compac BM1384 Bitcoin Miner",
+		.config = 1,
+		.timeout = GEKKO_TIMEOUT_MS,
+		.latency = LATENCY_UNUSED,
+		INTINFO(gek_ints) },
 #endif
 #ifdef USE_COINTERRA
 	{
@@ -3749,6 +3791,9 @@ void usb_cleanup(void)
 			case DRIVER_drillbit:
 			case DRIVER_modminer:
 			case DRIVER_icarus:
+			#if USE_GEKKO
+			case DRIVER_gekko:
+			#endif
 			case DRIVER_avalon:
 			case DRIVER_avalon2:
 			case DRIVER_avalon4:
