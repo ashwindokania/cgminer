@@ -1047,7 +1047,7 @@ retry:
 			}
 			gekko->usbdev->ident = info->ident = IDENT_GEK;
 			info->Hs = ANTU3_HASH_TIME;
-			gekko->drv->name = "COMPAC";
+			gekko->drv->name = "GEK";
 			applog(LOG_DEBUG, "%s %i: Detected GekkoScience Compac", gekko->drv->name,
 			       gekko->device_id);
 		err = usb_write_ii(gekko, info->intinfo,
