@@ -236,9 +236,10 @@ int opt_au3_volt = 775;
 float opt_rock_freq = 270;
 #endif
 #ifdef USE_GEKKO
-char *opt_gekko_options = NULL;
-char *opt_gekko_timing = NULL;
-float opt_gekko_freq = 125;
+char *opt_compac_options = NULL;
+char *opt_compac_timing = NULL;
+float opt_compac_freq = 125;
+
 #endif
 bool opt_worktime;
 #ifdef USE_AVALON
@@ -1237,8 +1238,8 @@ static struct opt_table opt_config_table[] = {
 		     "Set AntminerU3 voltage in mv, range 725-850, 0 to not set"),
 #endif
 #ifdef USE_GEKKO
-	OPT_WITH_ARG("--gekko-freq",
-		     set_float_100_to_500, &opt_show_floatval, &opt_gekko_freq,
+	OPT_WITH_ARG("--compac-freq",
+		     set_float_100_to_500, &opt_show_floatval, &opt_compac_freq,
 		     "Set GekkoScience Compac frequency in MHz, range 100-500"),
 
 #endif
@@ -1596,11 +1597,11 @@ static struct opt_table opt_config_table[] = {
 		     opt_hidden),
 #endif
 #ifdef USE_GEKKO
-	OPT_WITH_ARG("--gekko-options",
-		     opt_set_charp, NULL, &opt_gekko_options,
+	OPT_WITH_ARG("--compac-options",
+		     opt_set_charp, NULL, &opt_compac_options,
 		     opt_hidden),
-	OPT_WITH_ARG("--gekko-timing",
-		     opt_set_charp, NULL, &opt_gekko_timing,
+	OPT_WITH_ARG("--compac-timing",
+		     opt_set_charp, NULL, &opt_compac_timing,
 		     opt_hidden),
 #endif
 #if defined(HAVE_MODMINER)
@@ -2001,7 +2002,7 @@ static char *opt_verusage_and_exit(const char *extra)
 		"avalon4 "
 #endif
 #ifdef USE_AVALON_MINER
-		"avalon miner"
+		"avalon miner "
 #endif
 #ifdef USE_BFLSC
 		"bflsc "
