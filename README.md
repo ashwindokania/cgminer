@@ -16,14 +16,15 @@ This software use a slighty moddified driver from novak's gekko driver.
 
 I allows working with icarus miner and gekko on same rig.
 
-to build this specific code:
+to build this specific code on linux:
 
 	sudo apt-get update
 	sudo apt-get install build-essential autoconf automake libtool pkg-config libcurl4-openssl-dev libudev-dev \
 	libjansson-dev libncurses5-dev	libudev-dev libjansson-dev
 	./autogen.sh
-	./configure --enable-scrypt --enable-lketc
+	./configure --enable-gekko
 	make
+	make install
 
 ### Option Summary ###
 
