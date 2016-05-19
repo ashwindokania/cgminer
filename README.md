@@ -32,9 +32,19 @@ to build this specific code on linux:
   --compac-freq <clock>   Chip clock speed (MHz) default is 150 Mhz
 ```
 
+### Command line ###
+
+```
+  ./cgminer -o pool_url -u username -p password --gekko-freq 150
+```
+
+For windows users, you can donwload the release zip file
+
+Inside you can find a cgminer_run.bat file and you can adjust you settings.
+
 ## Nicehash extranonce support ##
 
 You can use your miner with last extranonce support for nicehash by adding #xnsub at the address end, like this:
 
-	./cgminer --scrypt -o stratum+tcp://scrypt.eu.nicehash.com:3333#xnsub -u my_btc_address -p x --lketc-clock 280
+	./cgminer -o stratum+tcp://scrypt.eu.nicehash.com:3333#xnsub -u my_btc_address -p x --gekko-clock 150
 	
