@@ -1,6 +1,6 @@
-#######################################################
-# CGminer 4.9.2 GekkoScience Compac BM1384 Stickminer #
-#######################################################
+############################################
+# CGminer 4.9.2 GekkoScience Compac BM1384 #
+############################################
 
 This is a cgminer 4.9.2 with support fot GekkoScience Compac BM1384 Support.
 
@@ -8,7 +8,7 @@ This software is forked from cgminer 4.9.2 original from ckolivas.
 
 (you can refer to original documentation to docs/README)
 
-## GekkoScience Usb miner ## 
+## GekkoScience Usb miner ##
 
 ![](https://raw.githubusercontent.com/wareck/cgminer-gekko/master/docs/gekko.jpg)
 
